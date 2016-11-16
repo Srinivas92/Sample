@@ -1,17 +1,14 @@
 <?php
-echo <table>
-<tr>
-<td>Forename</td>
-<td>Surname</td>
-</tr>';
-$sql="SELECT * from dba_tables";
-$rs=oracle_query($sql,$conn) or die(oracle_error());
-while($result=oracle_fetch_array($rs))
-{
-echo '<tr>
-<td>'.$result["forename"].'</td>
-<td>'.$result["surname"].'</td>
-</tr>';
+// Create connection to Oracle
+$conn = oci_connect("system", "system", "127.0.0.1/1521");
+if (!$conn) {
+   $m = oci_error();
+   echo $m['message'], "\n";
+   exit;
 }
-echo '</table>';
+else {
+   print "Connected to Oracle!";
+}
+// Close the Oracle connection
+oci_close($conn);
 ?>
