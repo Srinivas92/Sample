@@ -1,6 +1,6 @@
 <?php
 // Create connection to Oracle
-$conn = oci_connect("system", "system", "127.0.0.1/1521");
+$conn = oci_connect("system", "system", "127.0.0.1");
 if (!$conn) {
    $m = oci_error();
    echo $m['message'], "\n";
